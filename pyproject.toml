@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tictactoe-pygame"
+version = "1.0.0"
+description = "A clean, pygame-based Tic Tac Toe with Human vs Human and Human vs AI modes."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Mobin Yousefi", email = "mobinyousefi@example.com" }
+]
+keywords = ["pygame", "tic-tac-toe", "game", "ai", "minimax"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Games/Entertainment",
+  "Topic :: Software Development :: Libraries :: pygame"
+]
+
+dependencies = [
+  "pygame>=2.5.2"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "ruff>=0.6.9",
+  "black>=24.8.0",
+  "mypy>=1.11.2",
+]
+
+[project.scripts]
+tictactoe = "tictactoe.__main__:main"
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E203"]  # compatible with Black
+target-version = "py39"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.9"
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
